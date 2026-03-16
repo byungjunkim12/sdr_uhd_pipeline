@@ -6,6 +6,7 @@ find_package(UHD REQUIRED)
 add_executable(sdr_uhd_pipeline
     src/main.cpp
     src/producer.cpp
+    src/consumer_usrp.cpp
     src/producer_usrp.cpp
     src/consumer.cpp
 )

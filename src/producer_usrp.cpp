@@ -17,10 +17,12 @@ void producer_usrp(IQQueue<std::complex<float>>& queue,
     // RX configuration
     usrp->set_rx_rate(rate);
     usrp->set_rx_freq(uhd::tune_request_t(freq));
-    usrp->set_rx_gain(gain);
+    usrp->set_normalized_rx_gain(gain, 0);
+    usrp->set_rx_antenna("RX2", 0);
     
     // Generate rx_streamer
     uhd::stream_args_t stream_args("fc32");
+    stream_args.channels = {0};
     uhd::rx_streamer::sptr rx_stream = usrp->get_rx_stream(stream_args);
 
     // Initiate streaming
